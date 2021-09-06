@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Building', {
-    name: {
-        type: String
-    },
-    floors: {
-        type: Number
-    },
-    classrooms: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Classroom'
-    }]
-}, 'buildings');
+const BuildingSchema = mongoose.Schema({
+    name: String,
+    floors: Number,
+    classrooms: String,
+    posts: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+    ]
+},
+    {
+        timeStamps: true
+    });
+
+module.exports = mongoose.model('Building', BuildingSchema);

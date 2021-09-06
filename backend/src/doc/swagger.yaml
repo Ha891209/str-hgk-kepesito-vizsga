@@ -235,7 +235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/School'
+                $ref: '#/components/schemas/Student'
         '400':
           description: Invalid request when the post data is invalid
           content:
@@ -295,7 +295,7 @@ components:
           type: string
     School:
       type: object
-      required:        
+      required:
         - name
         - city
         - street
@@ -309,8 +309,12 @@ components:
           type: string
         zipcode:
           type: number
-        classroom:
-          type: string
+        classrooms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classroom'
+    Classroom:
+      type: string      
     Error:
       type: object
       required:
